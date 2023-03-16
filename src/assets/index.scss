@@ -1,0 +1,83 @@
+@import "variables.scss";
+
+body {
+  font-family: $base-font-family;
+  margin: 0;
+  padding: 0;
+  background-color: $gray-light;
+}
+
+img {
+  max-width: 100%;
+}
+.header {
+  background: $blue;
+  color: $white;
+  @include flex_row();
+  justify-content: center;
+  text-align: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  background-color: $white;
+  border-radius: 1rem;
+  margin: $margin;
+  .column {
+    color: $gray-dark;
+    padding: $padding;
+  }
+}
+
+.button {
+  border-radius: 5px;
+  padding: $padding;
+  background: $gray-light;
+  color: $gray-dark;
+  cursor: pointer;
+  text-align: center;
+  &:hover {
+    background-color: #a3a3a3;
+    color: #fcfcfc;
+  }
+}
+
+@include breakpoint(mobile) {
+  .layout {
+    grid-template-columns: 1fr;
+    margin: 0;
+    border-radius: 0;
+
+    .column {
+      text-align: center;
+      padding: 0;
+    }
+  }
+
+  .button {
+    width: unset;
+    display: block;
+    padding: 1rem;
+  }
+}
+
+@include breakpoint(tablet) {
+  .layout {
+    grid-template-columns: 1fr;
+    margin: 0;
+    border-radius: 0;
+
+    .column {
+      text-align: center;
+      padding: 0;
+    }
+  }
+
+  .button {
+    width: unset;
+    display: block;
+    padding: 1rem;
+  }
+}

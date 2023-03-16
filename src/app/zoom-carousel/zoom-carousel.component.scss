@@ -1,0 +1,176 @@
+@import "../../assets/variables.scss";
+@import "../../assets/mixins.scss";
+
+.carousel {
+  background-color: $white;
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+  padding: 0.75rem;
+  width: 100%;
+
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    .thumb-image {
+      background-color: $white;
+      border: solid 1px $gray-dark;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 0.75rem;
+      border-radius: 3px;
+      overflow: hidden;
+
+      &.thumb-image-active {
+        box-shadow: 0 0 8px 0px $gray-dark;
+        animation: grow 0.3s ease-in;
+      }
+    }
+  }
+
+  .image-viewer-container {
+    background-color: $white;
+    width: 100%;
+    margin-left: 0.75rem;
+    border-radius: 3px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .magnifier {
+      background-color: rgba(255, 255, 255, 0.24);
+      border: solid 1px $white;
+      position: absolute;
+      width: 200px;
+      height: 150px;
+      pointer-events: none;
+      display: none;
+    }
+  }
+
+  .zoom {
+    width: 400px;
+    background-color: $white;
+    padding: 20px;
+    position: absolute;
+    top: 30px;
+    height: 300px;
+    background-size: cover;
+    border: solid 1px $gray-dark;
+    animation: fadeIn 1s ease-in-out;
+    display: none;
+  }
+}
+
+@include breakpoint(mobile) {
+  .carousel {
+    width: unset;
+    flex-direction: column-reverse;
+
+    .thumbnails {
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      .thumb-image {
+        margin-bottom: 0;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .image-viewer-container {
+      width: 100%;
+      height: 100%;
+      margin: 0 0 0.75rem 0;
+      .magnifier {
+        display: none;
+      }
+    }
+    .zoom {
+      display: none;
+    }
+  }
+}
+
+@include breakpoint(tablet) {
+  .carousel {
+    width: unset;
+    flex-direction: column-reverse;
+
+    .thumbnails {
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      .thumb-image {
+        margin-bottom: 0;
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .image-viewer-container {
+      width: 100%;
+      height: 100%;
+      margin: 0 0 0.75rem 0;
+      .magnifier {
+        display: none;
+      }
+    }
+    .zoom {
+      display: none;
+    }
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.fade-out {
+  animation: fadeOut 2s ease-in-out;
+}
+
+.fade-out-in {
+  animation: fadeOutIn 2s ease-in-out;
+}
+
+/* animations*/
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
